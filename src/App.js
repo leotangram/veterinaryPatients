@@ -17,6 +17,23 @@ class App extends Component {
       appoinments
     })
   }
+
+  // Elimina las citas del state
+  deleteAppoinment = id => {
+    // Tomar una copia del state
+    const currentAppoinments = [...this.state.appoinments]
+
+    // Utilizar filter para sacar el elemento @id del arreglo
+    const appoinments = currentAppoinments.filter(
+      appoinment => appoinment.id !== id
+    )
+
+    // Actualizar el state
+    this.setState({
+      appoinments
+    })
+  }
+
   render() {
     return (
       <div className='container'>
@@ -26,7 +43,10 @@ class App extends Component {
             <NewAppoinment createNewAppoinment={this.createNewAppoinment} />
           </div>
           <div className='mt-5 col-md-10 mx-auto'>
-            <AppoinmentList appoinments={this.state.appoinments} />
+            <AppoinmentList
+              appoinments={this.state.appoinments}
+              deleteAppoinment={this.deleteAppoinment}
+            />
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Appoinment = ({ appoinment }) => (
+const Appoinment = ({ appoinment, deleteAppoinment }) => (
   <div className='media mt-3'>
     <div className='media-body'>
       <div className='mt-0'>
@@ -19,6 +19,12 @@ const Appoinment = ({ appoinment }) => (
         </p>
         <p>{appoinment.symptom}</p>
       </div>
+      <button
+        className='btn btn-danger'
+        onClick={() => deleteAppoinment(appoinment.id)}
+      >
+        Borrar &times;
+      </button>
     </div>
   </div>
 )
