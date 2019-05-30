@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 import uuid from 'uuid'
 
+const initialState = {
+  appoinment: {
+    pet: '',
+    owner: '',
+    date: '',
+    time: '',
+    symptom: ''
+  },
+  error: false
+}
+
 class NewAppoinment extends Component {
-  state = {
-    appoinment: {
-      pet: '',
-      owner: '',
-      date: '',
-      time: '',
-      symptom: ''
-    },
-    error: false
-  }
+  state = { ...initialState }
 
   // Cuando el usuario escribe en los Inputs
   handleChange = eventAppoinment => {
@@ -52,6 +54,11 @@ class NewAppoinment extends Component {
 
     // Agregar la cita al state de app
     this.props.createNewAppoinment(newAppoinment)
+
+    // Colocar el state en el initialState
+    this.setState({
+      ...initialState
+    })
   }
 
   render() {
