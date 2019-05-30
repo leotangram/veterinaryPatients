@@ -8,8 +8,11 @@ class NewAppoinment extends Component {
       date: '',
       time: '',
       symptom: ''
-    }
+    },
+    error: false
   }
+
+  // Cuando el usuario escribe en los Inputs
   handleChange = eventAppoinment => {
     console.log(
       `${eventAppoinment.target.name}: ${eventAppoinment.target.value}`
@@ -23,6 +26,34 @@ class NewAppoinment extends Component {
       }
     })
   }
+
+  // Cuando el usuario envía el formulario
+  handleSubmit = e => {
+    e.preventDefault()
+
+    // Extraer los valores del state
+    const { pet, owner, date, time, symptom } = this.state.appoinment
+
+    // Validar que los campos estén llenos
+    if (
+      pet === '' ||
+      owner === '' ||
+      date === '' ||
+      time === '' ||
+      symptom === ''
+    ) {
+      this.setState({
+        error: true
+      })
+      // Detener la ejecución
+      return
+    }
+    console.log('Después del if');
+    
+
+    // Agregar la cita al state de app
+  }
+
   render() {
     return (
       <div className='card mt-5 py-5'>
@@ -30,7 +61,7 @@ class NewAppoinment extends Component {
           <h2 className='card-title text-center mb-5'>
             Llena el formulario para crear una nueva cita
           </h2>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             {/* Form group */}
             <div className='form-group row'>
               <label className='col-sm-4 col-lg-2 col-form-label'>
