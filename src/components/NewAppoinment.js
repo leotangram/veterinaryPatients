@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import uuid from 'uuid'
 
 class NewAppoinment extends Component {
   state = {
@@ -14,10 +15,6 @@ class NewAppoinment extends Component {
 
   // Cuando el usuario escribe en los Inputs
   handleChange = eventAppoinment => {
-    console.log(
-      `${eventAppoinment.target.name}: ${eventAppoinment.target.value}`
-    )
-
     // Colocar lo que el usuario escribe en el state
     this.setState({
       appoinment: {
@@ -48,10 +45,13 @@ class NewAppoinment extends Component {
       // Detener la ejecución
       return
     }
-    console.log('Después del if');
-    
+
+    // Generar objeto con los datos
+    const newAppoinment = { ...this.state.appoinment }
+    newAppoinment.id = uuid()
 
     // Agregar la cita al state de app
+    this.props.createNewAppoinment(newAppoinment)
   }
 
   render() {
