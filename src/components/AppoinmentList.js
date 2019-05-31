@@ -1,5 +1,6 @@
 import React from 'react'
 import Appoinment from './Appoinment'
+import PropTypes from 'prop-types'
 
 const AppoinmentList = ({ appoinments, deleteAppoinment }) => (
   <div className='card mt-2 py-5'>
@@ -17,5 +18,10 @@ const AppoinmentList = ({ appoinments, deleteAppoinment }) => (
     </div>
   </div>
 )
+
+AppoinmentList.propTypes = {
+  appoinments: PropTypes.array.isRequired,
+  deleteAppoinment: PropTypes.func.isRequired
+}
 
 export default AppoinmentList

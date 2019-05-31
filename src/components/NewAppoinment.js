@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import uuid from 'uuid'
+import PropTypes from 'prop-types'
 
 const initialState = {
   appoinment: {
@@ -164,6 +165,10 @@ class NewAppoinment extends Component {
       </div>
     )
   }
+}
+
+NewAppoinment.propTypes = {
+  createNewAppoinment: PropTypes.func.isRequired
 }
 
 export default NewAppoinment

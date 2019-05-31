@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Appoinment = ({ appoinment, deleteAppoinment }) => (
   <div className='media mt-3'>
@@ -15,7 +16,7 @@ const Appoinment = ({ appoinment, deleteAppoinment }) => (
           <span>Hora:</span> {appoinment.time}
         </p>
         <p className='card-text'>
-          <span>Sintomas:</span>}
+          <span>Sintomas:</span>
         </p>
         <p>{appoinment.symptom}</p>
       </div>
@@ -28,5 +29,10 @@ const Appoinment = ({ appoinment, deleteAppoinment }) => (
     </div>
   </div>
 )
+
+Appoinment.propTypes = {
+  appoinment: PropTypes.object.isRequired,
+  deleteAppoinment: PropTypes.func.isRequired
+}
 
 export default Appoinment
