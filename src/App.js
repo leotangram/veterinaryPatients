@@ -8,6 +8,22 @@ class App extends Component {
   state = {
     appoinments: []
   }
+
+  // Cuando la aplicación carga
+  componentDidMount() {
+    const appoinmentsLocalStorage = localStorage.getItem('appoinments')
+    if (appoinmentsLocalStorage) {
+      this.setState({
+        appoinments: JSON.parse(appoinmentsLocalStorage)
+      })
+    }
+  }
+
+  // Cuando eliminamos o agregamos una nueva cita
+  componentDidUpdate(prevProps, prevState) {
+    localStorage.setItem('appoinments', JSON.stringify(this.state.appoinments))
+  }
+
   createNewAppoinment = newAppoinment => {
     // Copiar el state actual
     const appoinments = [...this.state.appoinments, newAppoinment]
